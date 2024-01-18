@@ -20,8 +20,17 @@
  *    getIntervalArray(0, 100) => [ 0, 1, 2, ..., 100 ]
  *    getIntervalArray(3, 3) => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  const newArr = [];
+  const x = start - end - 1;
+  const arr = Array.from(new Array(Math.abs(x)).fill(start));
+  arr.reduce((acc, item, ind) => {
+    let value = acc;
+    value = ind + item;
+    newArr.push(value);
+    return value;
+  }, 0);
+  return newArr;
 }
 
 /**
@@ -37,8 +46,30 @@ function getIntervalArray(/* start, end */) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  const arr = [];
+  if (arr1.length >= arr2.length) {
+    arr1.map((el, ind) => {
+      const value = el + arr2[ind];
+      if (Number.isNaN(value)) {
+        arr.push(el);
+      } else {
+        arr.push(el + arr2[ind]);
+      }
+      return true;
+    });
+  } else {
+    arr2.map((el, ind) => {
+      const value = el + arr1[ind];
+      if (Number.isNaN(value)) {
+        arr.push(el);
+      } else {
+        arr.push(el + arr1[ind]);
+      }
+      return true;
+    });
+  }
+  return arr;
 }
 
 /**
