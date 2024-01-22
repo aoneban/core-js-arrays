@@ -203,8 +203,8 @@ function isSameLength(arr) {
  *    isValueEqualsIndex([2, 1, 0, 4, 5]) => true
  *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
  */
-function isValueEqualsIndex(/* arr */) {
-  throw new Error('Not implemented');
+function isValueEqualsIndex(arr) {
+  return arr.some((el, ind) => el === ind);
 }
 
 /**
@@ -362,8 +362,19 @@ function selectMany(arr, childrenSelector) {
  *   calculateBalance([ [ 10, 8 ], [ 1, 5 ] ])  => (10 - 8) + (1 - 5) = 2 + -4 = -2
  *   calculateBalance([]) => 0
  */
-function calculateBalance(/* arr */) {
-  throw new Error('Not implemented');
+function calculateBalance(arr) {
+  const newArr = [];
+
+  arr.map((el) => {
+    newArr.push(el[0] - el[1]);
+    return newArr;
+  });
+
+  const result = newArr[0] + newArr[1];
+  if (Number.isNaN(result)) {
+    return 0;
+  }
+  return result;
 }
 
 /**
@@ -485,8 +496,17 @@ function getIdentityMatrix(n) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  const result = [];
+
+  numbers.map((el, ind) => {
+    if (el % 2 !== 0) {
+      result.push(ind);
+    }
+    return result;
+  });
+
+  return result;
 }
 
 /**
